@@ -12,9 +12,9 @@ import com.dimples.mvp.presenter.BaseLifeCircleMvpPresenter;
  * @author zhongyj
  * @date 2019/3/13 22:35
  */
-public abstract class BaseMvpPresenterBase<T extends IMvpView> extends BaseLifeCircleMvpPresenter<T> {
+public abstract class BaseMvpPresenter<T extends IMvpView> extends BaseLifeCircleMvpPresenter<T> {
 
-    public BaseMvpPresenterBase(T view) {
+    public BaseMvpPresenter(T view) {
         super(view);
     }
 
