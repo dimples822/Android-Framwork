@@ -1,14 +1,21 @@
 package com.dimples.framework;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.dimples.mvp.annotation.ViewInject;
+import com.dimples.mvp.base.BaseMvpActivity;
+
+/**
+ * MainActivity
+ *
+ * @author zhongyj
+ * @date 2019/4/21 14:09
+ */
+@ViewInject(layoutId = R.layout.activity_main)
+public class MainActivity extends BaseMvpActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public void afterBindView() {
+
     }
 }

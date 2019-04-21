@@ -3,6 +3,7 @@ package com.dimples.mvp.base;
 import android.content.Context;
 import android.os.Bundle;
 
+import com.dimples.mvp.annotation.ViewBind;
 import com.dimples.mvp.annotation.ViewInject;
 import com.dimples.mvp.view.LifeCircleMvpActivity;
 
@@ -22,18 +23,8 @@ public abstract class BaseMvpActivity extends LifeCircleMvpActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ViewInject annotation = this.getClass().getAnnotation(ViewInject.class);
-        if (null != annotation) {
-            if (annotation.LayoutId() == -1) {
-                throw new RuntimeException("LayoutId = 默认值(未注册)");
-            } else {
-                setContentView(annotation.LayoutId());
-                bindView();
-                afterBindView();
-            }
-        } else {
-            throw new RuntimeException("annotation = null");
-        }
+        ViewBind.bind(this);
+        afterBindView();
     }
 
     /**

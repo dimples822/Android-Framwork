@@ -55,7 +55,7 @@ public abstract class BaseLifeCircleMvpPresenter<T extends IMvpView> implements 
     }
 
     protected T getView() {
-        T view = weakReference != null ? (T) weakReference.get() : null;
+        T view = weakReference != null ? weakReference.get() : null;
         if (view == null) {
             return getEmptyView();
         }

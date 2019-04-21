@@ -34,9 +34,9 @@ public abstract class BaseMvpFragment extends LifeCircleMvpFragment {
         View view;
         ViewInject annotation = this.getClass().getAnnotation(ViewInject.class);
         if (null != annotation) {
-            int fragmentLayoutId = annotation.LayoutId();
+            int fragmentLayoutId = annotation.layoutId();
             if (fragmentLayoutId == -1) {
-                throw new RuntimeException("LayoutId = 默认值(未注册)");
+                throw new RuntimeException("layoutId = 默认值(未注册)");
             } else {
                 view = initFragmentView(fragmentLayoutId);
                 bindView(view);
