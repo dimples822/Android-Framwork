@@ -1,7 +1,5 @@
 package com.dimples.framework;
 
-import android.os.Bundle;
-
 import com.dimples.mvp.annotation.ViewInject;
 import com.dimples.mvp.base.BaseMvpActivity;
 

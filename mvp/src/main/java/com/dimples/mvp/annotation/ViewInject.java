@@ -21,6 +21,11 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Target(ElementType.TYPE)
 public @interface ViewInject {
 
+    /**
+     * layout的id设置
+     *
+     * @return int
+     */
     int layoutId() default -1;
 
 }

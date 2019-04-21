@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import butterknife.ButterKnife;
 
 /**
- * Activity基类
+ * Activity的MVP基类
  *
  * @author zhongyj
  * @date 2019/4/19 0:23
