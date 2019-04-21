@@ -1,5 +1,8 @@
 package com.dimples.mvp.presenter;
 
+import android.content.Intent;
+import android.os.Bundle;
+
 import com.dimples.mvp.ILifeCircle;
 import com.dimples.mvp.IMvpView;
 import com.dimples.mvp.MvpController;
@@ -68,6 +71,61 @@ public abstract class BaseLifeCircleMvpPresenter<T extends IMvpView> implements 
      * @return T
      */
     abstract T getEmptyView();
+
+    @Override
+    public void onCreated(Bundle savedInstanceState, Intent intent, Bundle getArguments) {
+
+    }
+
+    @Override
+    public void onStart() {
+
+    }
+
+    @Override
+    public void onResume() {
+
+    }
+
+    @Override
+    public void onPause() {
+
+    }
+
+    @Override
+    public void onStop() {
+
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle bundle) {
+
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState, Intent intent, Bundle getArguments) {
+
+    }
+
+    @Override
+    public void onDestroyView() {
+
+    }
+
+    @Override
+    public void onViewDestroy() {
+
+    }
+
+    @Override
+    public void onNewIntent(Intent intent) {
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+    }
 }
 
 
