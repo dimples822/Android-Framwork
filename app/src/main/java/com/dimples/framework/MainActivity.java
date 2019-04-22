@@ -1,7 +1,7 @@
 package com.dimples.framework;
 
-import com.dimples.mvp.annotation.ViewInject;
-import com.dimples.mvp.base.BaseMvpActivity;
+import com.dimples.base.BaseActivity;
+import com.dimples.base.annotation.ViewInject;
 
 /**
  * MainActivity
@@ -10,7 +10,12 @@ import com.dimples.mvp.base.BaseMvpActivity;
  * @date 2019/4/21 14:09
  */
 @ViewInject(layoutId = R.layout.activity_main)
-public class MainActivity extends BaseMvpActivity {
+public class MainActivity extends BaseActivity {
+
+    @Override
+    public void createPresenter() {
+
+    }
 
     @Override
     public void afterBindView() {

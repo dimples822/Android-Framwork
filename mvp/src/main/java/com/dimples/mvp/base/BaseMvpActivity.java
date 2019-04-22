@@ -1,14 +1,6 @@
 package com.dimples.mvp.base;
 
-import android.content.Context;
-import android.os.Bundle;
-
-import com.dimples.mvp.annotation.ViewBind;
-import com.dimples.mvp.annotation.ViewInject;
 import com.dimples.mvp.view.LifeCircleMvpActivity;
-
-import androidx.annotation.Nullable;
-import butterknife.ButterKnife;
 
 /**
  * Activity的MVP基类
@@ -18,26 +10,6 @@ import butterknife.ButterKnife;
  */
 public abstract class BaseMvpActivity extends LifeCircleMvpActivity {
 
-    public Context mContext;
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        ViewBind.bind(this);
-        afterBindView();
-    }
-
-    /**
-     * 模板方法  设计模式
-     */
-    public abstract void afterBindView();
-
-    /**
-     * View的依赖注解绑定
-     */
-    private void bindView() {
-        ButterKnife.bind(this);
-    }
 
 }
 

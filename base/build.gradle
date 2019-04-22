@@ -1,16 +1,19 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion Integer.valueOf(compile_sdk_version)
 
+
     defaultConfig {
-        applicationId "com.dimples.android_framework"
         minSdkVersion Integer.valueOf(min_sdk_version)
         targetSdkVersion Integer.valueOf(target_sdk_version)
         versionCode 1
         versionName "1.0"
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -18,20 +21,13 @@ android {
         }
     }
 
-    compileOptions {
-        sourceCompatibility 1.8
-        targetCompatibility 1.8
-    }
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
     implementation 'androidx.appcompat:' + androidx_appcompat
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.2.0-alpha04'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha04'
-    implementation 'com.hjq:xtoast:2.5'
-    implementation project(path: ':base')
+
+    implementation 'com.jakewharton:butterknife:10.1.0'
     implementation project(path: ':mvp')
 }

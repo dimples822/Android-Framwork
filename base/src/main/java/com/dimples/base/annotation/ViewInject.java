@@ -1,4 +1,4 @@
-package com.dimples.mvp.annotation;
+package com.dimples.base.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
