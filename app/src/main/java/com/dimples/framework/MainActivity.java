@@ -19,6 +19,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void afterBindView() {
-
+        getSupportFragmentManager().beginTransaction().replace(R.id.fl_main_fragment, new MainFragment()).commit();
     }
 }
