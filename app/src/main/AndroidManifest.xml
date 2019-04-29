@@ -10,6 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:name=".base.MyApplication"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity android:name="com.dimples.framework.MainActivity">
             <intent-filter>
