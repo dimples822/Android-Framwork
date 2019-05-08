@@ -169,7 +169,7 @@ public class ExceptionCrashHandler implements Thread.UncaughtExceptionHandler {
     /**
      * 获取一些简单的信息,软件版本，手机版本，型号等信息存放在HashMap中
      *
-     * @return HashMap<String   ,       String>
+     * @return HashMap<String       ,               String>
      */
     private HashMap<String, String> obtainSimpleInfo(Context context) {
         HashMap<String, String> map = new HashMap<>(6);
@@ -193,7 +193,7 @@ public class ExceptionCrashHandler implements Thread.UncaughtExceptionHandler {
     }
 
     /**
-     * 获取手机信息  HomiNote 6.0
+     * 获取手机信息  HomeNote 6.0
      *
      * @return String
      */

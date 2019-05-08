@@ -8,7 +8,8 @@
 /build
 /captures
 .externalNativeBuild
-app/libs/
 libs/
 src/main/res/drawable/
 src/main/gen/
+base/src/main/res/drawable/
+mvp/src/main/res/drawable/
