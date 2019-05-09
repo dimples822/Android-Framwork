@@ -1,11 +1,11 @@
 package com.dimples.base.annotation;
 
-import android.app.Activity;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
-import androidx.fragment.app.Fragment;
+import com.dimples.base.BaseActivity;
+import com.dimples.base.BaseFragment;
 
 import butterknife.ButterKnife;
 
@@ -22,8 +22,18 @@ public class ViewBind {
      *
      * @param activity Activity
      */
-    public static void bind(Activity activity) {
-        bindActivityView(activity);
+    public static void bindActivityView(BaseActivity activity) {
+        ViewInject annotation = activity.getClass().getAnnotation(ViewInject.class);
+        if (null != annotation) {
+            if (annotation.layoutId() == -1) {
+                throw new RuntimeException("layoutId = 默认值(未注册)");
+            } else {
+                activity.setContentView(annotation.layoutId());
+                ButterKnife.bind(activity);
+            }
+        } else {
+            throw new RuntimeException("annotation = null");
+        }
     }
 
     /**
@@ -31,26 +41,7 @@ public class ViewBind {
      *
      * @param fragment Fragment
      */
-    public static View bind(Fragment fragment) {
-        return bindFragmentView(fragment);
-    }
-
-    private static void bindActivityView(Activity activity) {
-        ViewInject annotation = activity.getClass().getAnnotation(ViewInject.class);
-        if (null != annotation) {
-            if (annotation.layoutId() == -1) {
-                throw new RuntimeException("layoutId = 默认值(未注册)");
-            } else {
-                activity.setContentView(annotation.layoutId());
-                bindView(activity);
-            }
-        } else {
-            throw new RuntimeException("annotation = null");
-        }
-    }
-
-    private static View bindFragmentView(Fragment fragment) {
-        Context context = fragment.getContext();
+    public static View bindFragmentView(BaseFragment fragment, LayoutInflater inflater, ViewGroup container) {
         View view;
         ViewInject annotation = fragment.getClass().getAnnotation(ViewInject.class);
         if (null != annotation) {
@@ -58,24 +49,13 @@ public class ViewBind {
             if (fragmentLayoutId == -1) {
                 throw new RuntimeException("layoutId = 默认值(未注册)");
             } else {
-                view = LayoutInflater.from(context).inflate(fragmentLayoutId, null);
-                bindView(fragment, view);
+                view = inflater.inflate(fragmentLayoutId, container, false);
+                ButterKnife.bind(fragment, view);
             }
         } else {
             throw new RuntimeException("annotation = null");
         }
         return view;
-    }
-
-    /**
-     * View的依赖注解绑定
-     */
-    private static void bindView(Activity activity) {
-        ButterKnife.bind(activity);
-    }
-
-    private static void bindView(Fragment fragment, View view) {
-        ButterKnife.bind(fragment, view);
     }
 
 }

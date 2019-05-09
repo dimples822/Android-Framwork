@@ -32,7 +32,7 @@ public class ExceptionCrashHandler implements Thread.UncaughtExceptionHandler {
     @SuppressLint("StaticFieldLeak")
     private static ExceptionCrashHandler mInstance;
 
-    private static final String TAG = "ExceptionCrashHandler";
+    private static final String D_TAG = "D-ExceptionCrashHandler";
     /**
      * 获取系统默认的
      */
@@ -67,7 +67,7 @@ public class ExceptionCrashHandler implements Thread.UncaughtExceptionHandler {
     @Override
     public void uncaughtException(Thread thread, Throwable ex) {
         // 全局异常
-        Log.e(TAG, ex.toString());
+        Log.e(D_TAG, ex.toString());
         // 写入到本地文件   ex   当前的版本  手机信息
         // 1. 崩溃的详细信息
         // 2. 应用信息 包名 版本号
@@ -75,7 +75,7 @@ public class ExceptionCrashHandler implements Thread.UncaughtExceptionHandler {
         // 4.保存当前文件，等应用再次启动再上传，（上传文件不在这里处理）
         String crashFileName = saveInfoToSD(ex);
 
-        Log.e(TAG, "fileName --> " + crashFileName);
+        Log.e(D_TAG, "fileName --> " + crashFileName);
 
         // 3. 缓存崩溃日志文件
         cacheCrashFile(crashFileName);

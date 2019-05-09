@@ -20,9 +20,12 @@ public abstract class BaseActivity extends BaseMvpActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ViewBind.bind(this);
+        mContext = this;
+        ViewBind.bindActivityView(this);
         createPresenter();
-        afterBindView();
+        initView();
+        initData();
+        initTitle();
     }
 
     /**
@@ -31,8 +34,19 @@ public abstract class BaseActivity extends BaseMvpActivity {
     public abstract void createPresenter();
 
     /**
-     * 模板方法  设计模式
+     * 初始化title
      */
-    public abstract void afterBindView();
+    public abstract void initTitle();
+
+    /**
+     * 初始化数据
+     */
+    public abstract void initData();
+
+    /**
+     * 初始化视图
+     */
+    public abstract void initView();
+
 
 }

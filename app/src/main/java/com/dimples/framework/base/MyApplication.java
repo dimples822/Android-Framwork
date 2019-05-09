@@ -1,7 +1,6 @@
 package com.dimples.framework.base;
 
-import android.app.Application;
-
+import com.dimples.base.BaseApplication;
 import com.dimples.base.ExceptionCrashHandler;
 
 /**
@@ -9,7 +8,7 @@ import com.dimples.base.ExceptionCrashHandler;
   * @author zhongyj
   * @date 2019/4/29
   */
-public class MyApplication extends Application {
+public class MyApplication extends BaseApplication {
 
     @Override
     public void onCreate() {

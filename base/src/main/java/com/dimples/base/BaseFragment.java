@@ -29,16 +29,29 @@ public abstract class BaseFragment extends BaseMvpFragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = ViewBind.bind(this);
+        View view = ViewBind.bindFragmentView(this, inflater, container);
         createPresenter();
-        afterBindView();
+        initView();
+        initData();
+        initTitle();
         return view;
     }
 
     /**
-     * 模板方法  设计模式
+     * 初始化title
      */
-    public abstract void afterBindView();
+    public abstract void initTitle();
+
+    /**
+     * 初始化数据
+     */
+    public abstract void initData();
+
+    /**
+     * 初始化视图
+     */
+    public abstract void initView();
+
 
     /**
      * 创建presenter

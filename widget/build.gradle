@@ -3,7 +3,6 @@ apply plugin: 'com.android.library'
 android {
     compileSdkVersion Integer.valueOf(compile_sdk_version)
 
-
     defaultConfig {
         minSdkVersion Integer.valueOf(min_sdk_version)
         targetSdkVersion Integer.valueOf(target_sdk_version)
@@ -28,12 +27,8 @@ dependencies {
 
     implementation 'androidx.appcompat:' + androidx_appcompat
 
-    implementation 'com.jakewharton:butterknife:10.1.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
-
-    //阿里热修复
-    implementation 'com.alipay.euler:andfix:0.5.0@aar'
-
-
-    implementation project(path: ':mvp')
+    //test
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
 }

@@ -20,10 +20,6 @@ public abstract class BaseLifeCircleMvpPresenter<T extends IMvpView> implements 
 
     private WeakReference<T> weakReference;
 
-    protected BaseLifeCircleMvpPresenter() {
-        super();
-    }
-
     protected BaseLifeCircleMvpPresenter(IMvpView iMvpView) {
         super();
         attachView(iMvpView);
@@ -70,7 +66,7 @@ public abstract class BaseLifeCircleMvpPresenter<T extends IMvpView> implements 
      *
      * @return T
      */
-    abstract T getEmptyView();
+    protected abstract T getEmptyView();
 
     @Override
     public void onCreated(Bundle savedInstanceState, Intent intent, Bundle getArguments) {

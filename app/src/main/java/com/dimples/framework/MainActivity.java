@@ -5,6 +5,7 @@ import android.util.Log;
 import com.dimples.base.BaseActivity;
 import com.dimples.base.ExceptionCrashHandler;
 import com.dimples.base.annotation.ViewInject;
+import com.dimples.framework.fragment.index.IndexFragment;
 
 import java.io.File;
 
@@ -25,15 +26,27 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    public void afterBindView() {
+    public void initTitle() {
+
+    }
+
+    @Override
+    public void initData() {
+
+    }
+
+    @Override
+    public void initView() {
+
         //首次进入软件首页时，获取上次软件的崩溃信息上传到服务器中
         File crashFile = ExceptionCrashHandler.getInstance().getCrashFile();
         if (crashFile.exists()) {
             // TODO: 2019/5/8 上传到服务器
             Log.i(TAG, "afterBindView: 上传软件的崩溃信息");
         }
-        getSupportFragmentManager().beginTransaction().replace(R.id.fl_main_fragment, new MainFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fl_main_fragment, new IndexFragment()).commit();
     }
+
 }
 
 
