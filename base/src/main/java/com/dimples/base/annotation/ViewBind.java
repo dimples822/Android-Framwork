@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 
 import com.dimples.base.BaseActivity;
 import com.dimples.base.BaseFragment;
+import com.dimples.base.exception.ViewInjectException;
 
 import butterknife.ButterKnife;
 
@@ -26,13 +27,13 @@ public class ViewBind {
         ViewInject annotation = activity.getClass().getAnnotation(ViewInject.class);
         if (null != annotation) {
             if (annotation.layoutId() == -1) {
-                throw new RuntimeException("layoutId = 默认值(未注册)");
+                throw new ViewInjectException("layoutId = 默认值(未注册)");
             } else {
                 activity.setContentView(annotation.layoutId());
                 ButterKnife.bind(activity);
             }
         } else {
-            throw new RuntimeException("annotation = null");
+            throw new ViewInjectException("annotation = null");
         }
     }
 
@@ -41,19 +42,19 @@ public class ViewBind {
      *
      * @param fragment Fragment
      */
-    public static View bindFragmentView(BaseFragment fragment, LayoutInflater inflater, ViewGroup container) {
+    public static View bindFragmentView(BaseFragment fragment, LayoutInflater inflater, ViewGroup container) throws ViewInjectException {
         View view;
         ViewInject annotation = fragment.getClass().getAnnotation(ViewInject.class);
         if (null != annotation) {
             int fragmentLayoutId = annotation.layoutId();
             if (fragmentLayoutId == -1) {
-                throw new RuntimeException("layoutId = 默认值(未注册)");
+                throw new ViewInjectException("layoutId = 默认值(未注册)");
             } else {
                 view = inflater.inflate(fragmentLayoutId, container, false);
                 ButterKnife.bind(fragment, view);
             }
         } else {
-            throw new RuntimeException("annotation = null");
+            throw new ViewInjectException("annotation = null");
         }
         return view;
     }

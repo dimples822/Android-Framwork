@@ -9,14 +9,13 @@ import com.dimples.framework.R;
 import butterknife.BindView;
 
 /**
- * 水波纹动画
+ * 首页
  *
  * @author zhongyj
  * @date 2019/5/9
  */
 @ViewInject(layoutId = R.layout.fragment_main)
 public class IndexFragment extends BaseFragment implements IIndexContract.IView {
-
 
     private static final String D_TAG = "D-IndexFragment";
 

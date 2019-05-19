@@ -3,13 +3,14 @@ package com.dimples.framework.fragment.index;
 import com.dimples.base.BasePresenter;
 
 /**
-  *
-  * @author zhongyj
-  * @date 2019/5/9
-  */
+ * 首页
+ *
+ * @author zhongyj
+ * @date 2019/5/9
+ */
 public class IndexPresenter extends BasePresenter<IIndexContract.IView> implements IIndexContract.IPresenter {
 
-    public IndexPresenter(IIndexContract.IView view) {
+    IndexPresenter(IIndexContract.IView view) {
         super(view);
     }
 
