@@ -42,4 +42,7 @@ dependencies {
 
     implementation project(path: ':base')
     implementation project(path: ':mvp')
+
+    implementation project(path: ':annotation')
+    annotationProcessor project(path: ':apt')
 }

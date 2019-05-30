@@ -1,5 +1,6 @@
 package com.dimples.framework.fragment.index;
 
+import com.dimples.annotation.MvpEmptyViewFactory;
 import com.dimples.mvp.ILifeCircle;
 import com.dimples.mvp.IMvpView;
 
@@ -9,6 +10,7 @@ import com.dimples.mvp.IMvpView;
  */
 public interface IIndexContract {
 
+    @MvpEmptyViewFactory
     interface IView extends IMvpView {
 
     }
@@ -22,7 +24,5 @@ public interface IIndexContract {
          */
         String getContentString();
     }
-
-    IIndexContract.IView EMPTY_VIEW = () -> null;
 
 }

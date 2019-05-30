@@ -1,0 +1,19 @@
+apply plugin: 'java-library'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //便捷生成Java文件的工具
+    implementation 'com.squareup:javapoet:1.11.1'
+    //特定路径下生成配置文件
+    implementation 'com.google.auto.service:auto-service:1.0-rc5'
+
+    implementation project(path: ':annotation')
+}
+
+sourceCompatibility = "8"
+targetCompatibility = "8"
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
