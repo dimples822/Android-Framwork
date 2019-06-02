@@ -17,12 +17,6 @@ public interface IIndexContract {
 
     interface IPresenter extends ILifeCircle {
 
-        /**
-         * 获取内容
-         *
-         * @return String
-         */
-        String getContentString();
     }
 
 }

@@ -14,10 +14,6 @@ public class IndexPresenter extends MyPresenter<IIndexContract.IView> implements
         super(view);
     }
 
-    @Override
-    public String getContentString() {
-        return "您好, 世界 !!!";
-    }
 }
 
 
