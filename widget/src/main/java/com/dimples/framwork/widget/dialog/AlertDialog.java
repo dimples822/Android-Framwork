@@ -1,4 +1,4 @@
-package com.dimples.base.dialog;
+package com.dimples.framwork.widget.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -6,7 +6,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.dimples.base.R;
+import com.dimples.framwork.widget.R;
 
 
 /**
@@ -20,7 +20,7 @@ public class AlertDialog extends Dialog {
     private AlertController mAlert;
 
 
-    public AlertDialog(Context context, int themeResId) {
+    private AlertDialog(Context context, int themeResId) {
         super(context, themeResId);
         mAlert = new AlertController(this, getWindow());
     }
@@ -81,6 +81,11 @@ public class AlertDialog extends Dialog {
         public Builder setContentView(View view) {
             P.mView = view;
             P.mViewLayoutResId = 0;
+            return this;
+        }
+
+        public Builder setDimAmount(float f){
+            P.mDimAmount = 0f;
             return this;
         }
 

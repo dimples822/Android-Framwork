@@ -1,4 +1,4 @@
-package com.dimples.base.dialog;
+package com.dimples.framwork.widget.dialog;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -80,6 +80,11 @@ class AlertController {
          * 主题
          */
         int mThemeResId;
+
+        /**
+         * 设置是否有遮罩层，默认没有
+         */
+        float mDimAmount = 0f;
         /**
          * 点击空白是否能够取消  默认点击阴影可以取消
          */
@@ -180,6 +185,9 @@ class AlertController {
             Window window = mAlert.getWindow();
             // 设置位置
             window.setGravity(mGravity);
+
+            //设置遮罩
+            window.setDimAmount(mDimAmount);
 
             // 设置动画
             if (mAnimations != 0) {

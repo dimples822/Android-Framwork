@@ -3,6 +3,7 @@ package com.dimples.framework;
 import android.util.Log;
 
 import com.dimples.base.BaseActivity;
+import com.dimples.base.DefaultNavigationBar;
 import com.dimples.base.ExceptionCrashHandler;
 import com.dimples.base.annotation.ViewInject;
 import com.dimples.framework.fragment.index.IndexFragment;
@@ -27,7 +28,10 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initTitle() {
-
+        DefaultNavigationBar navigationBar = new
+                DefaultNavigationBar.Builder(this)
+                .setTitle("投稿")
+                .builder();
     }
 
     @Override

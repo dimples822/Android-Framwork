@@ -5,8 +5,8 @@ import android.widget.LinearLayout;
 
 import com.dimples.base.BaseFragment;
 import com.dimples.base.annotation.ViewInject;
-import com.dimples.base.dialog.AlertDialog;
 import com.dimples.framework.R;
+import com.dimples.framwork.widget.dialog.AlertDialog;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -54,6 +54,8 @@ public class IndexFragment extends BaseFragment implements IIndexContract.IView 
     public void onViewClicked() {
         AlertDialog mDialog = new AlertDialog.Builder(mContext)
                 .setContentView(R.layout.detail_comment_dialog)
+                .fullWidth()
+                .formBottom(true)
                 .show();
     }
 }

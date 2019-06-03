@@ -1,4 +1,4 @@
-package com.dimples.base.dialog;
+package com.dimples.framwork.widget.dialog;
 
 import android.content.Context;
 import android.util.SparseArray;
