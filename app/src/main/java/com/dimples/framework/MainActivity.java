@@ -31,12 +31,14 @@ public class MainActivity extends BaseActivity {
         DefaultNavigationBar navigationBar = new
                 DefaultNavigationBar.Builder(this)
                 .setTitle("投稿")
+                .setRightText("消息")
+                .setBackground(getColor(R.color.colorPrimary))
+                .setForeground(getColor(R.color.colorWhite))
                 .builder();
     }
 
     @Override
     public void initData() {
-
     }
 
     @Override

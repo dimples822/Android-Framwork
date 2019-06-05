@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:id="@+id/default_title"
+    style="@style/default_title_bar_style">
+
+    <TextView
+        android:id="@+id/default_title_bar_back"
+        style="@style/default_title_back_view" />
+
+    <TextView
+        android:id="@+id/default_title_bar_title"
+        android:layout_weight="1"
+        android:visibility="gone"
+        style="@style/default_title_bar_title" />
+
+    <TextView
+        android:id="@+id/default_title_bar_right_text"
+        android:visibility="gone"
+        style="@style/default_title_bar_right" />
+</LinearLayout>

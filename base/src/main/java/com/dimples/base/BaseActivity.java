@@ -8,6 +8,8 @@ import androidx.annotation.Nullable;
 import com.dimples.base.annotation.ViewBind;
 import com.dimples.mvp.base.BaseMvpActivity;
 
+import java.util.Objects;
+
 /**
   *
   * @author zhongyj
@@ -20,6 +22,8 @@ public abstract class BaseActivity extends BaseMvpActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //设置默认样式没有系统默认的标题栏
+        Objects.requireNonNull(getSupportActionBar()).hide();
         mContext = this;
         ViewBind.bindActivityView(this);
         createPresenter();

@@ -7,7 +7,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.IdRes;
 
 /**
  * 头部的Builder基类
@@ -31,18 +35,42 @@ public abstract class AbsNavigationBar<P extends AbsNavigationBar.Builder.AbsNav
         return mParams;
     }
 
-
     /**
      * 设置文本
      *
      * @param viewId int
      * @param text   String
      */
-    protected void setText(int viewId, String text) {
+    protected void setText(@IdRes int viewId, String text) {
         TextView tv = findViewById(viewId);
         if (!TextUtils.isEmpty(text)) {
             tv.setVisibility(View.VISIBLE);
             tv.setText(text);
+        }
+    }
+
+    /**
+     * 设置控件的背景颜色
+     *
+     * @param color  int
+     * @param viewId int
+     */
+    protected void setBackgroundColor(@ColorInt int color, @IdRes int viewId) {
+        LinearLayout mLayout = findViewById(viewId);
+        mLayout.setBackgroundColor(color);
+    }
+
+    /**
+     * 设置控件的内容颜色
+     *
+     * @param color  int
+     * @param viewId int
+     */
+    protected void setForegroundColor(@ColorInt int color, @IdRes int... viewId) {
+        TextView tv;
+        for (int mI : viewId) {
+            tv = findViewById(mI);
+            tv.setTextColor(color);
         }
     }
 
@@ -52,13 +80,13 @@ public abstract class AbsNavigationBar<P extends AbsNavigationBar.Builder.AbsNav
      * @param viewId   int
      * @param listener View.OnClickListener
      */
-    protected void setOnClickListener(int viewId, View.OnClickListener listener) {
+    protected void setOnClickListener(@IdRes int viewId, View.OnClickListener listener) {
         findViewById(viewId).setOnClickListener(listener);
     }
 
 
     @SuppressWarnings("unchecked")
-    private <T extends View> T findViewById(int viewId) {
+    private <T extends View> T findViewById(@IdRes int viewId) {
         return (T) mNavigationView.findViewById(viewId);
     }
 
@@ -67,7 +95,6 @@ public abstract class AbsNavigationBar<P extends AbsNavigationBar.Builder.AbsNav
      */
     private void createAndBindView() {
         // 1. 创建View
-
         if (mParams.mParent == null) {
             // 获取activity的根布局，View源码
             ViewGroup activityRoot = (ViewGroup) ((Activity) (mParams.mContext))
@@ -75,20 +102,15 @@ public abstract class AbsNavigationBar<P extends AbsNavigationBar.Builder.AbsNav
             mParams.mParent = (ViewGroup) activityRoot.getChildAt(0);
             Log.e("TAG", mParams.mParent + "");
         }
-
         // 处理Activity的源码，后面再去看
-
         if (mParams.mParent == null) {
             return;
         }
-
         mNavigationView = LayoutInflater.from(mParams.mContext)
                 // 插件换肤
                 .inflate(getNavigationBarLayout(), mParams.mParent, false);
-
         // 2.添加
         mParams.mParent.addView(mNavigationView, 0);
-
         applyView();
     }
 

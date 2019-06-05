@@ -2,6 +2,7 @@ package com.dimples.base;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -22,18 +23,20 @@ public class DefaultNavigationBar<T extends DefaultNavigationBar.Builder.Default
 
     @Override
     public int getNavigationBarLayout() {
-        return R.layout.title_bar;
+        return R.layout.default_title_bar;
     }
 
     @Override
     public void applyView() {
         // 绑定效果
-        setText(R.id.title, getParams().mTitle);
-        setText(R.id.right_text, getParams().mRightText);
-
-        setOnClickListener(R.id.right_text, getParams().mRightClickListener);
+        setText(R.id.default_title_bar_title, getParams().mTitle);
+        setText(R.id.default_title_bar_right_text, getParams().mRightText);
+        setOnClickListener(R.id.default_title_bar_right_text, getParams().mRightClickListener);
         // 左边 要写一个默认的  finishActivity
-        setOnClickListener(R.id.back, getParams().mLeftClickListener);
+        setOnClickListener(R.id.default_title_bar_back, getParams().mLeftClickListener);
+        setBackgroundColor(getParams().mBackgroundColor, R.id.default_title);
+        setForegroundColor(getParams().mForegroundColor,
+                R.id.default_title_bar_back,R.id.default_title_bar_title, R.id.default_title_bar_right_text);
     }
 
 
@@ -63,6 +66,28 @@ public class DefaultNavigationBar<T extends DefaultNavigationBar.Builder.Default
         }
 
         /**
+         * 设置标题栏的背景
+         *
+         * @param color int
+         * @return Builder
+         */
+        public DefaultNavigationBar.Builder setBackground(int color) {
+            P.mBackgroundColor = color;
+            return this;
+        }
+
+        /**
+         * 设置标题栏的前景色
+         *
+         * @param color int
+         * @return Builder
+         */
+        public DefaultNavigationBar.Builder setForeground(int color) {
+            P.mForegroundColor = color;
+            return this;
+        }
+
+        /**
          * 设置居中文本
          *
          * @param title String
@@ -74,6 +99,8 @@ public class DefaultNavigationBar<T extends DefaultNavigationBar.Builder.Default
         }
 
         /**
+         * 设置右边的文本
+         *
          * @param rightText String
          * @return DefaultNavigationBar.Builder
          */
@@ -124,9 +151,10 @@ public class DefaultNavigationBar<T extends DefaultNavigationBar.Builder.Default
          */
         static class DefaultNavigationParams extends AbsNavigationBar.Builder.AbsNavigationParams {
 
+            int mBackgroundColor = Color.WHITE;
             String mTitle;
-
             String mRightText;
+            int mForegroundColor = Color.BLACK;
 
             View.OnClickListener mRightClickListener;
 
@@ -144,3 +172,13 @@ public class DefaultNavigationBar<T extends DefaultNavigationBar.Builder.Default
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
