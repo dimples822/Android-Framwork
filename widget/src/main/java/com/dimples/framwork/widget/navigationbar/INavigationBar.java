@@ -18,7 +18,7 @@ public interface INavigationBar {
     /**
      * 绑定头部的参数
      */
-    void applyView();
+    void bindView();
 }
 
 

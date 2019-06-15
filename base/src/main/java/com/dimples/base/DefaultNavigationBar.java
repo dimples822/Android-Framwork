@@ -6,7 +6,7 @@ import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.dimples.framwork.widget.navigationbar.AbsNavigationBar;
+import com.dimples.framwork.widget.navigationbar.AbstractNavigationBar;
 
 /**
  * 默认的NavigationBar效果实现类
@@ -15,7 +15,7 @@ import com.dimples.framwork.widget.navigationbar.AbsNavigationBar;
  * @date 2019/6/3
  */
 public class DefaultNavigationBar<T extends DefaultNavigationBar.Builder.DefaultNavigationParams> extends
-        AbsNavigationBar<DefaultNavigationBar.Builder.DefaultNavigationParams> {
+        AbstractNavigationBar<DefaultNavigationBar.Builder.DefaultNavigationParams> {
 
     private DefaultNavigationBar(DefaultNavigationBar.Builder.DefaultNavigationParams params) {
         super(params);
@@ -27,14 +27,14 @@ public class DefaultNavigationBar<T extends DefaultNavigationBar.Builder.Default
     }
 
     @Override
-    public void applyView() {
+    public void bindView() {
         // 绑定效果
         setText(R.id.default_title_bar_title, getParams().mTitle);
         setText(R.id.default_title_bar_right_text, getParams().mRightText);
         setOnClickListener(R.id.default_title_bar_right_text, getParams().mRightClickListener);
         // 左边 要写一个默认的  finishActivity
         setOnClickListener(R.id.default_title_bar_back, getParams().mLeftClickListener);
-        setBackgroundColor(getParams().mBackgroundColor, R.id.default_title);
+        setBackgroundColor(getParams().mBackgroundColor);
         setForegroundColor(getParams().mForegroundColor,
                 R.id.default_title_bar_back,R.id.default_title_bar_title, R.id.default_title_bar_right_text);
     }
@@ -46,7 +46,7 @@ public class DefaultNavigationBar<T extends DefaultNavigationBar.Builder.Default
      * @author zhongyj
      * @date 2019/6/3
      */
-    public static class Builder extends AbsNavigationBar.Builder {
+    public static class Builder extends AbstractNavigationBar.Builder {
 
         DefaultNavigationParams P;
 
@@ -149,7 +149,7 @@ public class DefaultNavigationBar<T extends DefaultNavigationBar.Builder.Default
          * @author zhongyj
          * @date 2019/6/3
          */
-        static class DefaultNavigationParams extends AbsNavigationBar.Builder.AbsNavigationParams {
+        static class DefaultNavigationParams extends AbstractNavigationBar.Builder.AbsNavigationParams {
 
             int mBackgroundColor = Color.WHITE;
             String mTitle;

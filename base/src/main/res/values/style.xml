@@ -32,6 +32,8 @@
 		<item name="android:layout_height">match_parent</item>
 		<item name="android:layout_width">0dp</item>
 		<item name="android:gravity">center</item>
+		<item name="android:clickable">true</item>
+		<item name="android:background">?attr/selectableItemBackground</item>
 	</style>
 
 	<!--标题栏左边区域-->
@@ -39,6 +41,7 @@
 		<item name="android:layout_width">44dp</item>
 		<item name="android:layout_height">44dp</item>
 		<item name="android:gravity">center</item>
+		<item name="android:textColor">#ff6b5547</item>
 		<item name="android:background">@drawable/btn_back</item>
 		<!--设置按压效果-->
 		<item name="android:foreground">?attr/selectableItemBackground</item>
